@@ -10,7 +10,7 @@ import {
   getUnreadCount
 } from '@/api/user'
 import { setToken, getToken } from '@/libs/util'
-
+import Vue from 'vue'
 export default {
   state: {
     userName: '',
@@ -81,11 +81,16 @@ export default {
           userName,
           password
         }).then(res => {
-          const data = res.data
-          commit('setToken', data.token)
-          resolve()
+          if(res.data.code==200){
+            const data = res.data
+            commit('setToken', data.data)
+            resolve(data)
+          }else {
+            Vue.prototype.$Message.error(res.data.message)
+          }
         }).catch(err => {
           reject(err)
+          Vue.prototype.$Message.error(res.data.message)
         })
       })
     },
@@ -100,9 +105,9 @@ export default {
           reject(err)
         })
         // 如果你的退出登录无需请求接口，则可以直接使用下面三行代码而无需使用logout调用接口
-        // commit('setToken', '')
-        // commit('setAccess', [])
-        // resolve()
+        commit('setToken', '')
+        commit('setAccess', [])
+        resolve()
       })
     },
     // 获取用户相关信息

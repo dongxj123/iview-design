@@ -2,7 +2,7 @@
     <div>
         选择市级职能部门&nbsp;
         <Select v-model="search_funcDep" style="width:130px">
-            <Option v-for="item in departments" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            <Option v-for="item in departments" :value="item.depId" :key="item.depId">{{ item.name }}</Option>
         </Select>
         选择区县&nbsp;
         <Select v-model="search_county" style="width:130px">
@@ -71,7 +71,9 @@
     </div>
 </template>
 <script>
-
+import {
+  getDepts
+} from '@/api/routers'
 import excel from '@/libs/excel'
     export default {
         data () {
@@ -262,16 +264,14 @@ import excel from '@/libs/excel'
         },
         computed:{
             departments(){
-                return [
-                    {
-                        value: '市教育局',
-                        label: '市教育局'
-                    },
-                    {
-                        value: '中和实验小学',
-                        label: '中和实验小学'
+                getDepts().then(res=>{
+                    if(res.data.code==200){
+                        return res.data.data
                     }
-                ]
+                }).catch(err => {
+                    console.log(err)
+                    this.$Message.error(err.message)
+                })
             },
             cityList(){
                 return [
