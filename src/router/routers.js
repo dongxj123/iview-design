@@ -69,6 +69,63 @@ export default [
       }
     ]
   },
+  {
+    path: '/',
+    name: '/',
+    component: Main,
+    meta: {
+      hideInBread: true
+    },
+    children: [
+      {
+        path: 'career_manage',
+        name: 'career_manage',
+        meta: {
+          icon: 'md-notifications',
+          title: '职业管理'
+        },
+        component: () => import('@/view/components/career_manage/career_manage.vue')
+      }
+    ]
+  },
+  {
+    path: '/',
+    name: '/',
+    component: Main,
+    meta: {
+      hideInBread: true
+    },
+    children: [
+      {
+        path: 'staff_manage',
+        name: 'staff_manage',
+        meta: {
+          icon: 'md-person',
+          title: '人员管理'
+        },
+        component: () => import('@/view/components/staff_manage/staff_manage.vue')
+      }
+    ]
+  },
+  {
+    path: '/',
+    name: '/',
+    component: Main,
+    meta: {
+      hideInBread: true
+    },
+    children: [
+      {
+        path: 'scan_path',
+        name: 'scan_path',
+        meta: {
+          icon: 'md-qr-scanner',
+          title: '人员扫码轨迹'
+        },
+        component: () => import('@/view/components/scan_path/scan_path.vue')
+      }
+    ]
+  },
   // {
   //   path: '',
   //   name: 'doc',
@@ -265,35 +322,35 @@ export default [
   //     }
   //   ]
   // },
-  {
-    path: '/excel',
-    name: 'excel',
-    meta: {
-      icon: 'ios-stats',
-      title: 'EXCEL导入导出'
-    },
-    component: Main,
-    children: [
-      {
-        path: 'upload-excel',
-        name: 'upload-excel',
-        meta: {
-          icon: 'md-add',
-          title: '导入EXCEL'
-        },
-        component: () => import('@/view/excel/upload-excel.vue')
-      },
-      {
-        path: 'export-excel',
-        name: 'export-excel',
-        meta: {
-          icon: 'md-download',
-          title: '导出EXCEL'
-        },
-        component: () => import('@/view/excel/export-excel.vue')
-      }
-    ]
-  },
+  // {
+  //   path: '/excel',
+  //   name: 'excel',
+  //   meta: {
+  //     icon: 'ios-stats',
+  //     title: 'EXCEL导入导出'
+  //   },
+  //   component: Main,
+  //   children: [
+  //     {
+  //       path: 'upload-excel',
+  //       name: 'upload-excel',
+  //       meta: {
+  //         icon: 'md-add',
+  //         title: '导入EXCEL'
+  //       },
+  //       component: () => import('@/view/excel/upload-excel.vue')
+  //     },
+  //     {
+  //       path: 'export-excel',
+  //       name: 'export-excel',
+  //       meta: {
+  //         icon: 'md-download',
+  //         title: '导出EXCEL'
+  //       },
+  //       component: () => import('@/view/excel/export-excel.vue')
+  //     }
+  //   ]
+  // },
   // {
   //   path: '/tools_methods',
   //   name: 'tools_methods',

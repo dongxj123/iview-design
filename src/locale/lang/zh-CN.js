@@ -1,4 +1,7 @@
 export default {
+  scan_path:'人员扫码轨迹',
+  staff_manage:'人员管理',
+  career_manage:'职业管理',
   acc_manage:'单位管理',
   home: '首页',
   login: '登录',
